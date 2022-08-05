@@ -19,6 +19,7 @@ const Bar = styled.div`
 const Container = styled.div`
   border-radius: 4px;
   background-color: ${COLORS.transparentGray15};
+  box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
   position: relative;
   width: 100%;
   height: var(--height);
@@ -47,7 +48,13 @@ const getStyle = (size) => ({
 
 const ProgressBar = ({ value, size }) => {
   return (
-    <Container style={getStyle(size)} role="progressbar">
+    <Container
+      style={getStyle(size)}
+      role="progressbar"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow={value}
+    >
       <Bar>
         <Progress value={value} size={size} />
       </Bar>
